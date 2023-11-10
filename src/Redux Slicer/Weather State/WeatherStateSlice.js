@@ -5,7 +5,8 @@ const initialState = {
     coordinates: {
         lat: "",
         lon: ""
-    }
+    },
+    overView: {}
 }
 
 export const weatherSlice = createSlice({
@@ -15,9 +16,12 @@ export const weatherSlice = createSlice({
         updateLocation: (state, action) => {
             state.coordinates.lat = action.payload.lat
             state.coordinates.lon = action.payload.lon
+        },
+        updateOverview: (state, action) => {
+            state.overView = action.payload
         }
     }
 })
 
-export const {updateLocation} = weatherSlice.actions
+export const { updateLocation, updateOverview } = weatherSlice.actions
 export default weatherSlice.reducer

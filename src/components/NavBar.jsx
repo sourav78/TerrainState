@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./comp.css"
+import { updateLocation, updateOverview } from '../Redux Slicer/Weather State/WeatherStateSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 function NavBar() {
 
     const [address, setAddress] = useState("")
     const [toogle, setToogle] = useState(true)
     const [weatherData, setWeatherData] = useState({})
+    const dispathch = useDispatch()
+    const cood = useSelector(state => state.coordinates)
 
     useEffect(() => {
       
@@ -19,6 +23,16 @@ function NavBar() {
         
         getCurrentLocation()
     }, [toogle])
+
+    const weath = {
+        lon: weatherData.longitude,
+        lat: weatherData.latitude
+    }
+
+    useEffect(() => {
+        dispathch(updateLocation(weath))
+        dispathch(updateOverview(weatherData))
+    }, [weatherData])
     
     const getSearchLocation = async () => {
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${address}/today?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=58RFYTMSNQM5WXER9BCLRAENU&contentType=json`)

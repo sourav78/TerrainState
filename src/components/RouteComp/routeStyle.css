@@ -4,3 +4,10 @@
     box-sizing: border-box;
 }
 
+.hhh{
+    background-image: url(../../Assets/night-view.jpg);
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #f0f8ffda;
+}
