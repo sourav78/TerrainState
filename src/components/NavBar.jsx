@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import "./comp.css"
 import { updateLocation, updateOverview } from '../Redux Slicer/Weather State/WeatherStateSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import currLocation from ".././Assets/gps.png"
 
 function NavBar() {
 
@@ -10,14 +11,23 @@ function NavBar() {
     const [toogle, setToogle] = useState(true)
     const [weatherData, setWeatherData] = useState({})
     const dispathch = useDispatch()
-    const cood = useSelector(state => state.coordinates)
+    // const cood = useSelector(state => state.coordinates)
+
+    async function getWeatherData(param){
+        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${param}/today?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=58RFYTMSNQM5WXER9BCLRAENU&contentType=json`)
+        if(!response.ok){
+            alert("Error")
+            return weatherData
+        }else{
+            const data = await response.json()
+            return data
+        }
+    }
 
     useEffect(() => {
       
         const getCurrentLocation = async () => {
-            const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${"20.2960587"}%2C%20${"85.8245398"}/today?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=58RFYTMSNQM5WXER9BCLRAENU&contentType=json`)
-            const data = await response.json()
-            console.log(data);
+            let data = await getWeatherData("20.2960587, 85.8245398")
             setWeatherData(data)
         }
         
@@ -35,17 +45,9 @@ function NavBar() {
     }, [weatherData])
     
     const getSearchLocation = async () => {
-        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${address}/today?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=58RFYTMSNQM5WXER9BCLRAENU&contentType=json`)
-        const data = await response.json()
-        console.log(data);
+        let data = await getWeatherData(address)
         setWeatherData(data)
     }
-    
-    // const getCurrentLocation = async () => {
-    //     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${"20.2960587"}%2C%20${"85.8245398"}/today?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=58RFYTMSNQM5WXER9BCLRAENU&contentType=json`)
-    //     const data = await response.json()
-    //     console.log(data);
-    // }
 
     return (
         <>
@@ -67,7 +69,9 @@ function NavBar() {
                         {/* Current location button for get users current location */}
                         <button
                             onClick={() => setToogle((prev) => !prev)}
-                        className=' px-2 py-1 bg-[#9625ff] rounded-full text-lg text-white shadow-lg border-black'>Current Location</button>
+                        className=' px-1 py-1 bg-[#9625ff] rounded-full text-lg text-white shadow-lg border-black'>
+                            <img className='w-10' src={currLocation} alt="" />
+                        </button>
                     </div>
 
                     <p className='text-4xl text-white font-bold'>TerrainState</p>
