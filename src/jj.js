@@ -10,3 +10,6 @@ if (typeof yourVariable === 'object' && yourVariable !== null) {
   // The variable is not an object or it is null
   console.log('It is not an object.');
 }
+
+let date = new Date()
+console.log(date.getDay());
