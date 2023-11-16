@@ -80,7 +80,7 @@ function TempCharts() {
                                 <ReferenceDot r={20} fill="red" stroke="none" />
                                 <CartesianGrid strokeDasharray="0 1" />
                                 <Tooltip />
-                                <Area type="monotone" dataKey="temp" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+                                <Area type="natural" dataKey="temp" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
                                 {/* <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" /> */}
                             </AreaChart>
                         </ResponsiveContainer>
@@ -92,7 +92,7 @@ function TempCharts() {
                                 <XAxis dataKey="hour" />
                                 <YAxis />
                                 <Tooltip />
-                                <Line type="bump" dataKey="temp" stroke="#8884d8" />
+                                <Line type="natural" dataKey="temp" stroke="#8884d8" />
                             </LineChart>
                         </ResponsiveContainer>
                     ) : chart === "bar" ? (

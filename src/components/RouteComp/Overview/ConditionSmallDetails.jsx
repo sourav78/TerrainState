@@ -19,36 +19,36 @@ function ConditionSmallDetails() {
 
     return (
         <>
-            <div className="flex w-[400px] p-4 h-72 bg-white border-2 border-slate-400 rounded-lg">
-                <div className="w-1/2 p-3 flex flex-col justify-around h-full">
-                    <div className=" flex items-center gap-6">
-                        <img className='w-12' src={sunrise} alt="" />
+            <div className="flex xl:w-[400px] w-full p-4 sm:h-72 bg-white border-2 border-slate-400 rounded-lg">
+                <div className="w-1/2 sm:p-3 p-1 gap-4 flex flex-col justify-around h-full">
+                    <div className=" flex items-center sm:gap-6 gap-3">
+                        <img className='sm:w-12 w-10' src={sunrise} alt="" />
                         <div className="">
-                            <p className='text-lg font-semibold'>Sunrise</p>
-                            <p className=' text-xl font-bold'>{sunrise1}</p>
+                            <p className='sm:text-lg font-semibold'>Sunrise</p>
+                            <p className=' sm:text-xl text-lg font-bold'>{sunrise1}</p>
                         </div>
                     </div>
-                    <div className=" flex items-center gap-6">
-                        <img className='w-12' src={sunset} alt="" />
+                    <div className=" flex items-center sm:gap-6 gap-3">
+                        <img className='sm:w-12 w-10' src={sunset} alt="" />
                         <div className="">
-                            <p className='text-lg font-semibold'>Sunset</p>
-                            <p className=' text-xl font-bold'>{sunset1}</p>
+                            <p className='sm:text-lg font-semibold'>Sunset</p>
+                            <p className=' sm:text-xl text-lg font-bold'>{sunset1}</p>
                         </div>
                     </div>
                 </div>
-                <div className="w-1/2 p-3 flex flex-col justify-around h-full">
-                    <div className=" flex items-center gap-6">
-                        <img className='w-12' src={maxtemp} alt="" />
+                <div className="w-1/2 p-3 gap-4 flex flex-col justify-around h-full">
+                    <div className=" flex items-center sm:gap-6 gap-3">
+                        <img className='sm:w-12 w-10' src={maxtemp} alt="" />
                         <div className="">
-                            <p className='text-lg font-semibold'>Max Temp</p>
-                            <p className=' text-xl font-bold'>{weatherData.days[0].tempmax}°C</p>
+                            <p className='sm:text-lg font-semibold'>Max Temp</p>
+                            <p className=' sm:text-xl text-lg font-bold'>{weatherData.days[0].tempmax}°C</p>
                         </div>
                     </div>
-                    <div className=" flex items-center gap-6">
-                        <img className='w-12' src={mintemp} alt="" />
+                    <div className=" flex items-center sm:gap-6 gap-3">
+                        <img className='sm:w-12 w-10' src={mintemp} alt="" />
                         <div className="">
-                            <p className='text-lg font-semibold'>Min Temp</p>
-                            <p className=' text-xl font-bold'>{weatherData.days[0].tempmin}°C</p>
+                            <p className='sm:text-lg font-semibold'>Min Temp</p>
+                            <p className=' sm:text-xl text-lg font-bold'>{weatherData.days[0].tempmin}°C</p>
                         </div>
                     </div>
                 </div>

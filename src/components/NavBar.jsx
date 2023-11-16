@@ -56,8 +56,8 @@ function NavBar() {
                 <div className=" flex justify-between items-center">
                     <div className=" flex items-center gap-2">
                         {/* Search input for entering location */}
-                        <div className=" w-[420px] flex rounded overflow-hidden">
-                            <input className=' w-full px-2 py-1 text-xl outline-none border-none' type="text"
+                        <div className=" sm:w-[420px] w-full flex rounded overflow-hidden">
+                            <input className=' w-full px-2 py-1 sm:text-xl text-lg outline-none border-none' type="text"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
                             />
@@ -74,10 +74,10 @@ function NavBar() {
                         </button>
                     </div>
 
-                    <p className='text-4xl text-white font-bold'>TerrainState</p>
+                    <p className='text-4xl text-white font-bold hidden sm:block'>TerrainState</p>
                 </div>
             </div>
-            <div className="px-2 flex items-center gap-5">
+            <div className="px-2 flex items-center justify-center sm:justify-normal gap-5 flex-wrap">
                 {/* Router links or navigation for navigate within the page */}
                 <NavLink 
                     to="/"

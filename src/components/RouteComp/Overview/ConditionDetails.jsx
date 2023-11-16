@@ -51,63 +51,63 @@ function ConditionDetails() {
     return (
         <>
             <div className="flex gap-4 flex-wrap justify-between">
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-12' src={humidity} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Humidity</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.currentConditions.humidity}%</p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-12' src={feel} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Feelslike</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.currentConditions.feelslike}°</p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-10' src={wind} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Wind Speed</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.days[0].windspeed} km/h</p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-12' src={uv} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>UV Index</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.currentConditions.uvindex} <span className='text-sm'>{uvState}</span></p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-12' src={visibility} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Visibility</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.currentConditions.visibility} km</p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-10' src={dew} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Dew Point</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.currentConditions.dew}</p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-12' src={pressure} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Air Pressure</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.currentConditions.pressure} hPa</p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-12' src={snow} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Snow</p>
                         <p className=' text-2xl font-semibold text-white'>{weatherData.currentConditions.snow}</p>
                     </div>
                 </div>
-                <div className="morph w-56 h-24 p-2 flex items-center justify-evenly">
+                <div className="morph lg:w-56 w-full h-24 p-2 flex items-center justify-evenly">
                     <img className='w-10' src={windDir} alt="" />
                     <div className="">
                         <p className=' text-xl font-semibold text-white'>Wind Dir</p>
