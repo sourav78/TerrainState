@@ -4,7 +4,6 @@ import Layout from './Layout';
 import Overview from './components/RouteComp/Overview';
 import Analytics from './components/RouteComp/Analytics';
 import Details from './components/RouteComp/Details';
-import Maps from './components/RouteComp/Maps';
 
 function App() {
 
@@ -21,7 +20,6 @@ function App() {
         <Route path='' element={<Overview/>}/>
         <Route path='/analytics' element={<Analytics/>}/>
         <Route path='/details' element={<Details/>}/>
-        <Route path='/maps' element={<Maps/>}/>
       </Route>
     )
   )

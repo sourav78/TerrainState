@@ -103,14 +103,6 @@ function NavBar() {
                 >
                     Details
                 </NavLink>
-                <NavLink 
-                    to="/maps"
-                    className={({isActive}) => 
-                        `route-items min-w-[120px] text-center shadow-md py-2 px-4 text-lg font-semibold rounded-lg ${isActive ? "text-white bg-[#9625ff]" : "text-black bg-white"}`
-                    }
-                >
-                    Maps
-                </NavLink>
             </div>
         </>
     )

@@ -72,8 +72,6 @@ function Overview() {
                 break;
         }
 
-        console.log(weatherData);
-
         
 
     }, [weatherData])

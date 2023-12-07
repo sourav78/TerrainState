@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceDot, Line, LineChart, BarChart, Bar, ResponsiveContainer } from 'recharts';
 import { Select } from 'antd';
@@ -13,6 +13,7 @@ function TempCharts() {
         console.log(`selected ${value}`);
         setChart(value)
     };
+
 
     let dayHours = weatherData.days[0].hours
     let hourT = dayHours.map((ele) => {
@@ -80,7 +81,7 @@ function TempCharts() {
                                 <ReferenceDot r={20} fill="red" stroke="none" />
                                 <CartesianGrid strokeDasharray="0 1" />
                                 <Tooltip />
-                                <Area type="natural" dataKey="temp" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+                                <Area type="natural" dataKey="temp" stroke="#8884d8" strokeWidth={5} fillOpacity={1} fill="url(#colorUv)" />
                                 {/* <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" /> */}
                             </AreaChart>
                         </ResponsiveContainer>
@@ -92,7 +93,7 @@ function TempCharts() {
                                 <XAxis dataKey="hour" />
                                 <YAxis />
                                 <Tooltip />
-                                <Line type="natural" dataKey="temp" stroke="#8884d8" />
+                                <Line type="linear" dataKey="temp" stroke="#8884d8" strokeWidth={3} dot={0} activeDot={{ r: 8 }}  />
                             </LineChart>
                         </ResponsiveContainer>
                     ) : chart === "bar" ? (
