@@ -43,16 +43,15 @@ function Analytics() {
 
 		const getweatherData = async () => {
 			let cordinates = `${coord.lat}, ${coord.lon}`
-			// let url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}/${selectQuery}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=58RFYTMSNQM5WXER9BCLRAENU&contentType=json`
 
 			if(selectQuery === "Next 15 Days"){
-				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=CFBQXND8BMSSZ4BDTHNHC29YC&contentType=json`)
+				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=65QX5756TN8UWQKK6GD7ZT8N6&contentType=json`)
 				let data = await response.json()
 				setWeatherData(data)
 				
 				console.log(data)
 			}else{
-				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}/${selectQuery}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=CFBQXND8BMSSZ4BDTHNHC29YC&contentType=json`)
+				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}/${selectQuery}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=65QX5756TN8UWQKK6GD7ZT8N6&contentType=json`)
 				let data = await response.json()
 				setWeatherData(data)
 		
@@ -412,22 +411,22 @@ function Analytics() {
 
 				<div className="lg:w-7/12 w-full pt-2">
 					<div className="options w-full p-2 bg-white rounded-lg shadow-xl flex flex-wrap gap-2 justify-around items-center">
-						<button className={` ${selectQuery === "today" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2  border-purple-500 rounded-lg flex-1 lg:flex-none`}
+						<button className={` ${selectQuery === "today" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2  border-purple-500 rounded-lg flex-1 lg:flex-none min-w-[110px]`}
 							onClick={() => setSelectQuery("today")}
 						>Today</button>
-						<button className={`${selectQuery === "tomorrow" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
+						<button className={`${selectQuery === "tomorrow" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none min-w-[110px]`}
 							onClick={() => setSelectQuery("tomorrow")}
 						>Tommorow</button>
-						<button className={`${selectQuery === "yesterday" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
+						<button className={`${selectQuery === "yesterday" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none min-w-[110px]`}
 							onClick={() => setSelectQuery("yesterday")}
 						>Yesterday</button>
-						<button className={`${selectQuery === "next7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
+						<button className={`${selectQuery === "next7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none min-w-[110px]`}
 							onClick={() => setSelectQuery("next7days")}
 						>Next 7 Days</button>
-						<button className={`${selectQuery === "last7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
+						<button className={`${selectQuery === "last7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none min-w-[110px]`}
 							onClick={() => setSelectQuery("last7days")}
 						>Last 7 Days</button>
-						<button className={`${selectQuery === "Next 15 Days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
+						<button className={`${selectQuery === "Next 15 Days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none min-w-[110px]`}
 							onClick={() => setSelectQuery("Next 15 Days")}
 						>Next 15 Days</button>
 					</div>
@@ -562,7 +561,7 @@ function Analytics() {
 							</ResponsiveContainer>
 						</div>
 					</div>
-					<div className="radar p-1 bg-white mt-3 flex flex-wrap border gap-3 justify-around rounded-md shadow-md">
+					<div className="radar p-1 bg-white mt-3 flex sm:flex-nowrap flex-wrap border gap-3 justify-around rounded-md shadow-md">
 						<div className="sm:w-1/2 w-full">
 							<ResponsiveContainer width="100%" height={230}>
 								<RadarChart outerRadius={90} height={250} data={radarData}>

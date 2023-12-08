@@ -7,6 +7,8 @@ import currLocation from ".././Assets/gps.png"
 
 function NavBar() {
 
+    const [currentLoc, setCurrentLoc] = useState("")
+
     const [address, setAddress] = useState("")
     const [toogle, setToogle] = useState(true)
     const [weatherData, setWeatherData] = useState({})
@@ -25,14 +27,21 @@ function NavBar() {
     }
 
     useEffect(() => {
+
+        function gotLocation(position){
+            setCurrentLoc(`${position.coords.latitude}, ${position.coords.longitude}`)
+        }
+
+        navigator.geolocation.getCurrentPosition(gotLocation)
       
         const getCurrentLocation = async () => {
-            let data = await getWeatherData("20.2960587, 85.8245398")
+            let data = await getWeatherData(currentLoc)
             setWeatherData(data)
+            setAddress("")
         }
         
         getCurrentLocation()
-    }, [toogle])
+    }, [toogle, currentLoc])
 
     const weath = {
         lon: weatherData.longitude,
@@ -63,14 +72,14 @@ function NavBar() {
                                 onChange={(e) => setAddress(e.target.value)}
                             />
                             <button 
-                                className=' px-4 bg-[#9625ff] text-white'
+                                className=' px-4 bg-[#9625ff] active:bg-[#813ccf] text-white'
                                 onClick={getSearchLocation}
                             >Search</button>
                         </div>
                         {/* Current location button for get users current location */}
                         <button
                             onClick={() => setToogle((prev) => !prev)}
-                        className=' px-1 py-1 bg-[#9625ff] rounded-full text-lg text-white shadow-lg border-black'>
+                        className=' px-1 py-1 bg-[#9625ff] active:bg-[#813ccf] rounded-full text-lg text-white shadow-lg border-black'>
                             <img className='w-10' src={currLocation} alt="" />
                         </button>
                     </div>
