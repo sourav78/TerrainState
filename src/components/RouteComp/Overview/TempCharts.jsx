@@ -10,7 +10,6 @@ function TempCharts() {
     let [chart, setChart] = useState("area")
 
     const handleChange = (value) => {
-        console.log(`selected ${value}`);
         setChart(value)
     };
 

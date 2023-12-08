@@ -27,16 +27,13 @@ function Analytics() {
 	let [type, setType] = useState("temp")
 
     const chartHandleChange = (value) => {
-        console.log(`selected ${value}`);
         setChart(value)
     };
 	
 	const dataHandleChange = (value) => {
-		console.log(`selected ${value}`);
 		setType(value)
 	}
 
-	console.log(`${coord.lat}, ${coord.lon}`);
 
 
 	useEffect(() => {
@@ -49,13 +46,11 @@ function Analytics() {
 				let data = await response.json()
 				setWeatherData(data)
 				
-				console.log(data)
 			}else{
 				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}/${selectQuery}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=65QX5756TN8UWQKK6GD7ZT8N6&contentType=json`)
 				let data = await response.json()
 				setWeatherData(data)
 		
-				console.log(data);
 			}
 		}
 
@@ -93,7 +88,6 @@ function Analytics() {
 						rain: ele.humidity
 					}
 				})
-				console.log(chartData);
 			}else{
 				chartData = weatherData.days.map((ele) => {
 					return {
@@ -102,7 +96,6 @@ function Analytics() {
 						rain: ele.humidity
 					}
 				})
-				console.log(chartData);
 			}
 			
 		}else if( type === "mintemp"){
@@ -121,7 +114,6 @@ function Analytics() {
 						rain: ele.humidity
 					}
 				})
-				console.log(chartData);
 			}else{
 				chartData = weatherData.days.map((ele) => {
 					return {
@@ -130,7 +122,6 @@ function Analytics() {
 						rain: ele.humidity
 					}
 				})
-				console.log(chartData);
 			}
 
 		}else{
@@ -149,7 +140,6 @@ function Analytics() {
 						rain: ele.humidity
 					}
 				})
-				console.log(chartData);
 			}else{
 				chartData = weatherData.days.map((ele) => {
 					return {
@@ -158,7 +148,6 @@ function Analytics() {
 						rain: ele.humidity
 					}
 				})
-				console.log(chartData);
 			}
 
 		}
@@ -368,7 +357,6 @@ function Analytics() {
 			})
 			
 		}
-		console.log(conditionData);
 
 		let radarData = []
 
@@ -403,7 +391,6 @@ function Analytics() {
 			full: 100
 		})
 
-		console.log(radarData);
 
 
 		showOnPage = (
