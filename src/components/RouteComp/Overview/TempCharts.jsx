@@ -105,7 +105,7 @@ function TempCharts() {
                                 <XAxis dataKey="hour" />
                                 <YAxis />
                                 <Tooltip />
-                                <Bar dataKey="temp" fill="#ae57ff" />
+                                <Bar dataKey="temp" fill="#8884d8" />
                             </BarChart>
                         </ResponsiveContainer>
                     ) : ("")

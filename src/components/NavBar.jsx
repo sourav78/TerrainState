@@ -52,6 +52,7 @@ function NavBar() {
     return (
         <>
             {/* Main nav bar including search option and current location. */}
+            <p className='text-4xl font-bold text-center sm:hidden mt-2 text-[#9625ff]'>TerrainState</p>
             <div className="bg-sky-400 p-4 m-2 rounded-md shadow">
                 <div className=" flex justify-between items-center">
                     <div className=" flex items-center gap-2">
@@ -94,14 +95,6 @@ function NavBar() {
                     }
                 >
                     Analytics
-                </NavLink>
-                <NavLink 
-                    to="/details"
-                    className={({isActive}) => 
-                        `route-items min-w-[120px] text-center shadow-md py-2 px-4 text-lg font-semibold rounded-lg ${isActive ? "text-white bg-[#9625ff]" : "text-black bg-white"}`
-                    }
-                >
-                    Details
                 </NavLink>
             </div>
         </>

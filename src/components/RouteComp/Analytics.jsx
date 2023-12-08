@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceDot, Line, LineChart, BarChart, Bar, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceDot, Line, LineChart, BarChart, Bar, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
 import { Select } from 'antd';
 import clear from "../../Assets/Weather Icons/clear.png"
 import cloudyRain from "../../Assets/Weather Icons/cloudy_rainy.png"
@@ -369,31 +369,65 @@ function Analytics() {
 			})
 			
 		}
-
 		console.log(conditionData);
+
+		let radarData = []
+
+		radarData.push({
+			data: "Cloud Cover",
+			am: weatherData.days[0].cloudcover,
+			full: 100
+		})
+		radarData.push({
+			data: "Humidity",
+			am: weatherData.days[0].humidity,
+			full: 100
+		})
+		radarData.push({
+			data: "UV Index",
+			am: Number(weatherData.days[0].uvindex)*10,
+			full: 100
+		})
+		radarData.push({
+			data: "Visibility",
+			am: weatherData.days[0].visibility,
+			full: 100
+		})
+		radarData.push({
+			data: "Dew",
+			am: weatherData.days[0].dew,
+			full: 100
+		})
+		radarData.push({
+			data: "Feelslike",
+			am: weatherData.days[0].feelslike,
+			full: 100
+		})
+
+		console.log(radarData);
 
 
 		showOnPage = (
-			<div className="px-2 bg-[#d7f1ff] h-full flex gap-2">
+			<div className="px-2 bg-[#d7f1ff] h-full flex flex-wrap lg:flex-nowrap gap-2">
 
-				<div className="w-7/12 pt-2">
-					<div className="options w-full p-2 bg-white rounded-lg shadow-xl flex gap-2 justify-around items-center">
-						<button className={` ${selectQuery === "today" ? "text-white bg-[#9625ff]" : "text-black bg-white"} px-5 py-1 text-lg border-2  border-purple-500 rounded-lg`}
+				<div className="lg:w-7/12 w-full pt-2">
+					<div className="options w-full p-2 bg-white rounded-lg shadow-xl flex flex-wrap gap-2 justify-around items-center">
+						<button className={` ${selectQuery === "today" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2  border-purple-500 rounded-lg flex-1 lg:flex-none`}
 							onClick={() => setSelectQuery("today")}
 						>Today</button>
-						<button className={`${selectQuery === "tomorrow" ? "text-white bg-[#9625ff]" : "text-black bg-white"} px-5 py-1 text-lg border-2 border-purple-500 rounded-lg`}
+						<button className={`${selectQuery === "tomorrow" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
 							onClick={() => setSelectQuery("tomorrow")}
 						>Tommorow</button>
-						<button className={`${selectQuery === "yesterday" ? "text-white bg-[#9625ff]" : "text-black bg-white"} px-5 py-1 text-lg border-2 border-purple-500 rounded-lg`}
+						<button className={`${selectQuery === "yesterday" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
 							onClick={() => setSelectQuery("yesterday")}
 						>Yesterday</button>
-						<button className={`${selectQuery === "next7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} px-5 py-1 text-lg border-2 border-purple-500 rounded-lg`}
+						<button className={`${selectQuery === "next7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
 							onClick={() => setSelectQuery("next7days")}
 						>Next 7 Days</button>
-						<button className={`${selectQuery === "last7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} px-5 py-1 text-lg border-2 border-purple-500 rounded-lg`}
+						<button className={`${selectQuery === "last7days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
 							onClick={() => setSelectQuery("last7days")}
 						>Last 7 Days</button>
-						<button className={`${selectQuery === "Next 15 Days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} px-5 py-1 text-lg border-2 border-purple-500 rounded-lg`}
+						<button className={`${selectQuery === "Next 15 Days" ? "text-white bg-[#9625ff]" : "text-black bg-white"} lg:px-5 px-3 py-1 lg:text-lg text-sm border-2 border-purple-500 rounded-lg flex-1 lg:flex-none`}
 							onClick={() => setSelectQuery("Next 15 Days")}
 						>Next 15 Days</button>
 					</div>
@@ -444,20 +478,16 @@ function Analytics() {
 							/>
 						</div>
 
-						<div className="">
+						<div className=" lg:h-[270px] md:h-[240px] h-[230px]">
 							{
 								chart === "area" ? (
-									<ResponsiveContainer width="100%" height={270}>
+									<ResponsiveContainer width="100%" height="100%">
 										<AreaChart data={chartData}
 											margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
 											<defs>
 												<linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
 													<stop offset="10%" stopColor="#8884d8" stopOpacity={1} />
 													<stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-												</linearGradient>
-												<linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-													<stop offset="5%" stopColor="#82ca9d" stopOpacity={1} />
-													<stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
 												</linearGradient>
 											</defs>
 											<XAxis dataKey="hour" />
@@ -469,7 +499,7 @@ function Analytics() {
 										</AreaChart>
 									</ResponsiveContainer>
 								) : chart === "line" ? (
-									<ResponsiveContainer width="100%" height={270}>
+									<ResponsiveContainer width="100%" height="100%">
 										<LineChart width={730} height={230} data={chartData}
 											margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
 											<CartesianGrid strokeDasharray="2 3" />
@@ -480,7 +510,7 @@ function Analytics() {
 										</LineChart>
 									</ResponsiveContainer>
 								) : chart === "bar" ? (
-									<ResponsiveContainer width="100%" height={270}>
+									<ResponsiveContainer width="100%" height="100%">
 										<BarChart width={730} height={230} data={chartData}
 											margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
 										>
@@ -488,7 +518,7 @@ function Analytics() {
 											<XAxis dataKey="hour" />
 											<YAxis />
 											<Tooltip />
-											<Bar dataKey="temp" fill="#ae57ff" />
+											<Bar dataKey="temp" fill="#8884d8" />
 										</BarChart>
 									</ResponsiveContainer>
 								) : ("")
@@ -497,10 +527,11 @@ function Analytics() {
 					</div>
 
 					<div className="p-2 bg-white mt-5 rounded-md shadow-md">
-						<div className=" flex overflow-x-scroll gap-3">
+						<p className=' text-2xl font-semibold text-center mb-2'>Conditions</p>
+						<div className=" flex sm:overflow-x-scroll max-h-[280px] overflow-y-scroll flex-wrap sm:flex-nowrap sm:thumb-bar gap-3">
 						{
 							conditionData.map(ele => (
-								<div key={nanoid()} className=" px-1 py-2 max-w-[100px] min-w-[100px] w-full min-h-[110px] h-full border-2 border-slate-400 rounded-lg flex flex-col items-center justify-between leading-[8px]">
+								<div key={nanoid()} className=" px-1 py-2 flex-1 min-w-[100px] w-full min-h-[110px] h-full border-2 border-slate-400 rounded-lg flex flex-col items-center justify-between leading-[8px]">
 									<p className=''>{ele.datetime}</p>
 									<img className='w-16' src={ele.icon} alt="" />
 									<p className='text-sm'>{ele.condition}</p>
@@ -512,13 +543,13 @@ function Analytics() {
 				</div>
 
 				<div className="py-2 w-full">
-					<div className="p-2 bg-white rounded-md shadow-md">
+					<div className="rain p-2 bg-white rounded-md shadow-md">
 						<div className="flex items-center gap-1">
 							<div className="w-2 h-5 bg-black"></div>
 							<p className='text-xl font-semibold'>Rain</p>
 						</div>
-						<div className=" mt-4">
-							<ResponsiveContainer width="100%" height={350}>
+						<div className=" mt-4 lg:h-[300px] md:h-[240px] h-[230px]">
+							<ResponsiveContainer width="100%" height="100%">
 								<BarChart width={730} height={230} data={chartData}
 									margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
 								>
@@ -529,6 +560,44 @@ function Analytics() {
 									<Bar dataKey="rain" fill="#82ca9d" />
 								</BarChart>
 							</ResponsiveContainer>
+						</div>
+					</div>
+					<div className="radar p-1 bg-white mt-3 flex flex-wrap border gap-3 justify-around rounded-md shadow-md">
+						<div className="sm:w-1/2 w-full">
+							<ResponsiveContainer width="100%" height={230}>
+								<RadarChart outerRadius={90} height={250} data={radarData}>
+									<PolarGrid />
+									<PolarAngleAxis dataKey="data" />
+									<PolarRadiusAxis angle={30} domain={[0, 100]} />
+									<Radar dataKey="am" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+								</RadarChart>
+							</ResponsiveContainer>
+						</div>
+						<div className="p-2 flex justify-center items-start gap-2 flex-col">
+							<div className=" flex items-center gap-3">
+								<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+								<p className=' text-xl font-semibold'>{`Cloud Cover: ${radarData[0].am}/100`}</p>
+							</div>
+							<div className=" flex items-center gap-3">
+								<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+								<p className=' text-xl font-semibold'>{`Humidity: ${radarData[1].am}/100`}</p>
+							</div>
+							<div className=" flex items-center gap-3">
+								<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+								<p className=' text-xl font-semibold'>{`UV Index: ${radarData[2].am}/100`}</p>
+							</div>
+							<div className=" flex items-center gap-3">
+								<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+								<p className=' text-xl font-semibold'>{`Visibility: ${radarData[3].am}/100`}</p>
+							</div>
+							<div className=" flex items-center gap-3">
+								<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+								<p className=' text-xl font-semibold'>{`Dew Point: ${radarData[4].am}/100`}</p>
+							</div>
+							<div className=" flex items-center gap-3">
+								<div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+								<p className=' text-xl font-semibold'>{`Feelslike: ${radarData[5].am}/100`}</p>
+							</div>
 						</div>
 					</div>
 				</div>

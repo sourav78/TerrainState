@@ -110,7 +110,7 @@ function HoursCondition() {
             <div className=" w-full flex flex-wrap justify-around xl:justify-start items-start gap-2">
                 {
                     hoursCondition.map((ele, ind) => (
-                        <div key={nanoid()} className=" px-1 py-2 max-w-[100px] w-full min-h-[110px] h-full border-2 border-slate-400 rounded-lg flex flex-col items-center justify-between leading-[8px]">
+                        <div key={nanoid()} className=" px-1 py-2 flex-1 min-w-[100px] w-full min-h-[110px] h-full border-2 border-slate-400 rounded-lg flex flex-col items-center justify-between leading-[8px]">
                             <p className=''>{hoursArr[ind]}</p>
                             <img className='w-16' src={ele.icon} alt="" />
                             <p className='text-sm'>{ele.condition}</p>
