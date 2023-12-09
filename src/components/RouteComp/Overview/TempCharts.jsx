@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import { useSelector } from 'react-redux'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceDot, Line, LineChart, BarChart, Bar, ResponsiveContainer } from 'recharts';
 import { Select } from 'antd';
