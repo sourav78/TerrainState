@@ -34,7 +34,7 @@ function Analytics() {
 		setType(value)
 	}
 
-
+  const keyAnalytics = process.env.REACT_APP_WEATHER_ANALYTICS
 
 	useEffect(() => {
 
@@ -42,12 +42,12 @@ function Analytics() {
 			let cordinates = `${coord.lat}, ${coord.lon}`
 
 			if(selectQuery === "Next 15 Days"){
-				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=65QX5756TN8UWQKK6GD7ZT8N6&contentType=json`)
+				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=${keyAnalytics}&contentType=json`)
 				let data = await response.json()
 				setWeatherData(data)
 				
 			}else{
-				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}/${selectQuery}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=65QX5756TN8UWQKK6GD7ZT8N6&contentType=json`)
+				let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cordinates}/${selectQuery}?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=${keyAnalytics}&contentType=json`)
 				let data = await response.json()
 				setWeatherData(data)
 		

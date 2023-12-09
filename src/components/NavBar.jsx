@@ -15,8 +15,10 @@ function NavBar() {
     const dispathch = useDispatch()
     // const cood = useSelector(state => state.coordinates)
 
+    const Weatherkey = process.env.REACT_APP_WEATHER_KEY1
+
     async function getWeatherData(param){
-        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${param}/today?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=58RFYTMSNQM5WXER9BCLRAENU&contentType=json`)
+        const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${param}/today?unitGroup=metric&include=hours%2Cdays%2Calerts%2Ccurrent&key=${Weatherkey}&contentType=json`)
         if(!response.ok){
             alert("Error")
             return weatherData
